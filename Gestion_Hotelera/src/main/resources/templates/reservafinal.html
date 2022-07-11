@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/estiloReservaFinal.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playball&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+        <title>Reserva2</title>
+        <link rel="icon" href="../img/hotel_icon.png">
+    </head>
+    <body>
+        <header>
+            <div th:replace="fragmentos/menu :: menu"></div> 
+            <!--fragmento de reemplazo para el menú-->
+        </header>
+        <div class="rectangulo"> </div>
+
+        <img src="../img/booking.png" class="booking"  >
+        <!--    RESERVA FINAL-->
+        <form action="/usuario/confirmar"   method="POST">
+            <label for="" class="monto" >MONTO A PAGAR: $</label><input class="monto" id="plata" name="pagar" th:value="${pagar}"></input>
+            <div class="mb-3">
+                <label for="" class="label0">DETALLES DE LA RESERVA</label>
+                <label for="" class="label0" id="ingreso">INGRESO</label>
+                <label for="" class="label0" id="egreso">EGRESO</label>
+                <input type="date"  class="fechaIn" th:value="${CheckIn}" disabled></input>
+                <input type="date" name="Checkin" class="fechaIn" th:value="${CheckIn}" hidden></input>
+                <input type="date" class="fechaOut"  th:value="${CheckOut}" disabled></input>
+                <input type="date" class="fechaOut" name="Checkout"  th:value="${CheckOut}" hidden></input>
+                <label for="" class="label1">Cantidad de personas</label>
+                <input type="number" class="input1" disabled th:value="${CantidadPersonas}"></input>
+                <input type="number" class="input1" name="CantidadPersonas" hidden th:value="${CantidadPersonas}"></input>
+
+                <label for="" class="label2">Habitacion doble</label>
+                <input class="input2" th:value="${habitacion2}" disabled></input>
+                <input class="input2" name="Habitacion2Personas" th:value="${habitacion2}" hidden></input>
+
+                <label for="" class="label3">Habitación cuádruple</label>
+                <input class="input3"  th:value="${habitacion4}" disabled></input>
+                <input class="input3" name="Habitacion4Personas" th:value="${habitacion4}" hidden></input>
+
+                <label for="" class="label4">Habitación séxtuple</label>
+                <input class="input4" th:value="${habitacion6}" disabled></input>
+                <input class="input4" name="Habitacion6Personas" th:value="${habitacion6}" hidden></input>
+
+
+
+                <p class="input6" th:if="${error != null}" th:text="${error}" style="color:red;"> </p>
+
+            </div>
+
+
+            <button type="submit">
+                <span class="label">Confirmar reserva</span>
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
+                </span>
+            </button>
+
+        </form>
+         <footer> 
+        <rectangulo id="foot"> </rectangulo>
+        <p id="eggp">Eggperience</p>
+        <p id="by"> by egg</p>
+        <p id="derechos">©  Eggperience - todos los derechos reservados</p>
+
+        <a href="https://www.facebook.com/"  target="blank"><img src="../img/facebook2.png" class="face"></a>
+        <a href="https://www.instagram.com/"  target="blank"><img src="../img/instagram.png" class="insta"></a>
+        <a href="https://api.whatsapp.com/send?phone=3875152032&text=%C2%A1Hola!%20Bienvenidos%20a%20Eggperiencie" target="blank"><img src="../img/whatsapp.png" class="what"></a>
+    </footer> 
+
+
+        <div class="scrol"></div>
+        <script src="../js/menuIndex.js"></script>
+    </body>
+</html>
